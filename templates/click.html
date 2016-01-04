@@ -1,0 +1,71 @@
+<html>
+<head>
+ <style>
+.btn-on {
+	background-color:#44c767;
+	border:12px solid #18ab29;
+	/*display:inline-block;*/
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:28px;
+	padding:20%;
+	text-decoration:none;
+	position: relative;
+	width: 50%;
+	max-width: 1080px;
+	margin:0 auto;
+	top: 50%;
+	left: 30%;
+
+}
+.btn-on:hover {
+	background-color:#5cbf2a;
+}
+.btn-on:active {
+	position:relative;
+	top:1px;
+}
+.btn-off {
+	background-color:#F05B4E;
+	border:12px solid #CD3041;
+	/*display:inline-block;*/
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:28px;
+	padding:20%;
+	text-decoration:none;
+	position: relative;
+	width: 40%;
+	max-width: 1080px;
+	margin:0 auto;
+	top: 50%;
+	left: 30%;
+
+}
+.btn-off:hover {
+	background-color:#A62C39;
+}
+.btn-off:active {
+	position:relative;
+	top:1px;
+}
+ </style>
+</head>
+<body>
+<form action="/on" method="post">
+    <button type="submit" class="btn-on" value="On" style="width:400px; height:300px;" />
+	    ON
+    </button>
+</form>
+
+<form action="/off" method="post">
+    <button type="submit" class="btn-off" value="Off" />
+	    OFF
+    </button>
+</form>
+</body>
+</html>
+
+
