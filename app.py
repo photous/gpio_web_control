@@ -7,20 +7,19 @@ import RPi.GPIO as GPIO
 import time
 from flask import Flask, render_template, request
 app = Flask(__name__)
-
+@app.before_first_request
+def _set_everything():
+    GPIO.setmode(GPIO.BOARD)  
+    GPIO.setup(11, GPIO.OUT)  
 def gpio_on(pin):  
 # to use Raspberry Pi board pin numbers
-	    GPIO.setmode(GPIO.BOARD)  
 # set up GPIO output channel  
-	    GPIO.setup(pin, GPIO.OUT)  
 ##############
             GPIO.output(pin,GPIO.HIGH)
 	    return
 def gpio_off(pin):
 # to use Raspberry Pi board pin numbers
-	    GPIO.setmode(GPIO.BOARD)  
 # set up GPIO output channel  
-	    GPIO.setup(pin, GPIO.OUT)  
 ##############
 	    GPIO.output(pin,GPIO.LOW)
 	    return
@@ -39,7 +38,8 @@ def on(x=None, y=None):
     print "IT'S ON!"
     # You can change 11 to use a different GPIO pin
     gpio_on(11)
-    return render_template('click.html', x=x)
+    return render_template('off.html', x=x)
+    return redirect('/off')
 
 @app.route('/off', methods=['GET', 'POST'])
 
@@ -48,7 +48,8 @@ def off(x=None, y=None):
     print "IT'S OFF!"
     # You can change 11 to use a different GPIO pin
     gpio_off(11)
-    return render_template('click.html', x=x)
+    return render_template('on.html', x=x)
+    return redirect('/on')
 
 GPIO.cleanup()   
 if __name__ == '__main__':
